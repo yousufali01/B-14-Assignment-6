@@ -96,10 +96,6 @@ export default function MyPlanPage() {
       <div className="mx-auto w-full max-w-7xl">
         {/* Header */}
         <div className="mb-10">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-[#CCFF00]">
-            Your Workout Log
-          </p>
-
           <h1 className="font-[family:var(--font-oswald)] text-5xl font-bold uppercase leading-none sm:text-6xl lg:text-7xl">
             My Plan
           </h1>
