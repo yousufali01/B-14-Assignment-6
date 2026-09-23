@@ -8,7 +8,7 @@ import {
   Clock3,
   Flame,
   Star,
-  Trash2,
+  X,
   Check,
 } from "lucide-react";
 import { useState } from "react";
@@ -335,10 +335,11 @@ export default function MyPlanPage() {
                               ? handleRemovePlan(workout.id)
                               : handleRemoveSaved(workout.id)
                           }
-                          className="btn btn-square border border-white/20 bg-transparent text-gray-400 hover:border-red-500 hover:bg-transparent hover:text-red-500"
+                          className="btn btn-square border border-white/20 bg-transparent text-gray-400 transition hover:border-red-500 hover:bg-red-500/10 hover:text-red-400"
                           aria-label={`Remove ${workout.name}`}
+                          title="Remove workout"
                         >
-                          <Trash2 size={18} />
+                          <X size={18} />
                         </button>
                       </div>
                     </div>

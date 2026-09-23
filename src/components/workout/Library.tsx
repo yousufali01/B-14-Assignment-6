@@ -7,7 +7,7 @@ export default async function Library() {
   return (
     <section
       id="library"
-      className="bg-black px-4 py-16 text-white sm:px-6 lg:px-8 lg:py-24"
+      className="bg-black px-1.25 py-16 text-white lg:py-24"
     >
       <div className="mx-auto max-w-[96%]">
         {/* Section Heading */}
