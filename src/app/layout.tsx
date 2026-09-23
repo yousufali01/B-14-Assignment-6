@@ -8,6 +8,7 @@ import Footer from "@/components/shared/Footer";
 const oswald = Oswald({
   subsets: ["latin"],
   variable: "--font-oswald",
+  preload: false,
 });
 
 export default function RootLayout({
