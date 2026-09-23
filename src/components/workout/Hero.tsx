@@ -1,11 +1,10 @@
 import Image from "next/image";
 import { ArrowDownRight } from "lucide-react";
-import image from "/banner.png";
 
 export default function Hero() {
   return (
-    <section className="bg-gray-900 text-white m-10 rounded-2xl">
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 px-3 py-16 lg:flex-row lg:py-24">
+    <section className="bg-gray-900  text-white m-15 rounded-2xl">
+      <div className="mx-auto flex max-w-[96%] h-150 flex-col items-center gap-12 px-3 py-16 lg:flex-row lg:py-24">
         {/* Left Content */}
         <div className="flex-1">
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-lime-400">
@@ -32,14 +31,14 @@ export default function Hero() {
         </div>
 
         {/* Right Image */}
-        <div className="flex-1">
+        <div className="flex-1 translate-x-5 sm:translate-x-10 md:translate-x-15 lg:translate-x-25">
           <Image
             src="/banner.png"
             alt="FitLog Workout Banner"
-            width={700}
-            height={700}
+            width={800}
+            height={800}
             priority
-            className="w-full rounded-3xl object-cover"
+            className="w-auto h-auto rounded-3xl object-cover "
           />
         </div>
       </div>

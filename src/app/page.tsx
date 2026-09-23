@@ -1,21 +1,11 @@
 import Hero from "@/components/workout/Hero";
+import Library from "@/components/workout/Library";
 
 export default function Home() {
   return (
-    <main>
+    <main className="bg-black">
       <Hero />
-
-      {/* Workout Library Section */}
-      <section
-        id="library"
-        className="mx-auto max-w-7xl px-6 py-16"
-      >
-        <h2 className="mb-8 text-3xl font-bold">
-          Workout Library
-        </h2>
-
-        {/* Next step: Workout Cards */}
-      </section>
+      <Library />
     </main>
   );
 }
