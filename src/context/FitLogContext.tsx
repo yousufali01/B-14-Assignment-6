@@ -21,39 +21,51 @@ interface FitLogContextType {
   isSaved: (id: number) => boolean;
 }
 
-const FitLogContext = createContext<FitLogContextType | undefined>(undefined);
+const FitLogContext = createContext<FitLogContextType | undefined>(
+  undefined
+);
 
-export function FitLogProvider({ children }: { children: ReactNode }) {
+export function FitLogProvider({
+  children,
+}: {
+  children: ReactNode;
+}) {
   const [plan, setPlan] = useState<Workout[]>([]);
   const [saved, setSaved] = useState<Workout[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    try {
-      const storedPlan = localStorage.getItem("fitlog-plan");
-      const storedSaved = localStorage.getItem("fitlog-saved");
+    const loadData = () => {
+      try {
+        const storedPlan = localStorage.getItem("fitlog-plan");
+        const storedSaved = localStorage.getItem("fitlog-saved");
 
-      if (storedPlan) {
-        const parsedPlan = JSON.parse(storedPlan);
+        if (storedPlan) {
+          const parsedPlan = JSON.parse(storedPlan);
 
-        if (Array.isArray(parsedPlan)) {
-          setPlan(parsedPlan);
+          if (Array.isArray(parsedPlan)) {
+            setPlan(parsedPlan);
+          }
         }
-      }
 
-      if (storedSaved) {
-        const parsedSaved = JSON.parse(storedSaved);
+        if (storedSaved) {
+          const parsedSaved = JSON.parse(storedSaved);
 
-        if (Array.isArray(parsedSaved)) {
-          setSaved(parsedSaved);
+          if (Array.isArray(parsedSaved)) {
+            setSaved(parsedSaved);
+          }
         }
+      } catch {
+        setPlan([]);
+        setSaved([]);
+      } finally {
+        setIsLoading(false);
       }
-    } catch {
-      setPlan([]);
-      setSaved([]);
-    } finally {
-      setIsLoading(false);
-    }
+    };
+
+    const timer = window.setTimeout(loadData, 0);
+
+    return () => window.clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -68,13 +80,11 @@ export function FitLogProvider({ children }: { children: ReactNode }) {
     }
   }, [saved, isLoading]);
 
-  // Today's Plan-এ workout add
   const addToPlan = (workout: Workout) => {
     if (plan.some((item) => item.id === workout.id)) {
       return false;
     }
 
-    // Maximum 5 workouts
     if (plan.length >= 5) {
       return false;
     }
@@ -84,7 +94,6 @@ export function FitLogProvider({ children }: { children: ReactNode }) {
     return true;
   };
 
-  // Save workout for later
   const saveForLater = (workout: Workout) => {
     setSaved((currentSaved) => {
       if (currentSaved.some((item) => item.id === workout.id)) {
@@ -96,14 +105,16 @@ export function FitLogProvider({ children }: { children: ReactNode }) {
   };
 
   const removeFromPlan = (id: number) => {
-    setPlan((currentPlan) => currentPlan.filter((item) => item.id !== id));
+    setPlan((currentPlan) =>
+      currentPlan.filter((item) => item.id !== id)
+    );
   };
-
 
   const removeFromSaved = (id: number) => {
-    setSaved((currentSaved) => currentSaved.filter((item) => item.id !== id));
+    setSaved((currentSaved) =>
+      currentSaved.filter((item) => item.id !== id)
+    );
   };
-
 
   const isInPlan = (id: number) => {
     return plan.some((item) => item.id === id);
@@ -136,7 +147,9 @@ export function useFitLog() {
   const context = useContext(FitLogContext);
 
   if (!context) {
-    throw new Error("useFitLog must be used inside FitLogProvider");
+    throw new Error(
+      "useFitLog must be used inside FitLogProvider"
+    );
   }
 
   return context;

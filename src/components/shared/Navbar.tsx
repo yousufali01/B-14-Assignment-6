@@ -29,7 +29,7 @@ export default function Navbar() {
             className="rounded-full"
           />
 
-          <h1 className="text-2xl font-bold text-white">FitLog</h1>
+          <h1 className="text-2xl font-bold text-white">FITLOG</h1>
         </Link>
 
         {/* Desktop Navigation */}
@@ -88,7 +88,7 @@ export default function Navbar() {
           {open ? <X size={28} /> : <Menu size={28} />}
         </button>
       </nav>
-      <div className="h-px w-full bg-black" />
+      <div className="h-px w-full bg-gray-800" />
 
       {/* Mobile Menu */}
       {open && (

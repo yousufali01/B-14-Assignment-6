@@ -3,7 +3,7 @@ import { ArrowDownRight } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="mx-2 mt-6 mb-10 rounded-2xl bg-gray-900 text-white sm:mx-4 sm:mb-12 lg:mx-6 lg:mb-16">
+    <section className="mx-2 mt-6 mb-4 rounded-2xl bg-gray-900 text-white sm:mx-4 sm:mb-6 lg:mx-6 lg:mb-8">
       <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-8 px-5 py-10 sm:gap-10 sm:px-8 sm:py-14 md:py-16 lg:flex-row lg:gap-6 lg:px-10 lg:py-16 xl:gap-10">
         {/* Left Content */}
         <div className="w-full flex-1 lg:max-w-[52%]">
