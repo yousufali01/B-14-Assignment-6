@@ -14,7 +14,7 @@ export default function WorkoutCard({ workout }: WorkoutCardProps) {
         {/* Image */}
         <figure className="relative h-65 w-full overflow-hidden bg-[#1a1a1a]">
           <Image
-            src={workout.image}
+            src={workout.id === 1 ? "/workouts/bench-press.jpg" : workout.image}
             alt={workout.name}
             fill
             className="object-cover transition duration-500 group-hover:scale-105"
