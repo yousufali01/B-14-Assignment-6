@@ -12,7 +12,7 @@ export default function WorkoutCard({ workout }: WorkoutCardProps) {
     <Link href={`/workout/${workout.id}`} className="group block h-full">
       <div className="card h-full overflow-hidden border border-white/10 bg-[#111111] shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-[#CCFF00]/40 hover:shadow-2xl">
         {/* Image */}
-        <figure className="relative h-56 w-full overflow-hidden bg-[#1a1a1a]">
+        <figure className="relative h-65 w-full overflow-hidden bg-[#1a1a1a]">
           <Image
             src={workout.image}
             alt={workout.name}

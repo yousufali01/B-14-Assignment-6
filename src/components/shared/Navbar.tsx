@@ -5,19 +5,20 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { useFitLog } from "@/context/FitLogContext";
 
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  // For now initial value is 0
-  // Later these will be dynamic from Today's Plan and Saved items
-  const planCount = 0;
-  const savedCount = 0;
+  const { plan, saved } = useFitLog();
+
+  const planCount = plan.length;
+  const savedCount = saved.length;
 
   return (
     <header className="w-full bg-black">
-      <nav className="mx-auto flex h-20 max-w-[96%] items-center justify-between px-3 lg:px-8">
+      <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
           <Image
@@ -33,7 +34,6 @@ export default function Navbar() {
 
         {/* Desktop Navigation */}
         <div className="hidden items-center gap-4 md:flex">
-          {/* Workouts */}
           <Link
             href="/"
             className={`rounded-full px-5 py-2 font-medium transition ${
@@ -45,7 +45,6 @@ export default function Navbar() {
             Workouts
           </Link>
 
-          {/* My Plan */}
           <Link
             href="/my-plan"
             className={`rounded-full px-3 py-2 font-medium transition ${
@@ -58,9 +57,8 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Right Side Badges */}
+        {/* Badges */}
         <div className="hidden items-center gap-3 md:flex">
-          {/* Plan Badge */}
           <Link
             href="/my-plan"
             className="flex items-center gap-2 rounded-full bg-[#CCFF00] px-4 py-2 transition hover:bg-[#b8e600]"
@@ -70,7 +68,6 @@ export default function Navbar() {
             <span className="font-bold text-black">{planCount}</span>
           </Link>
 
-          {/* Saved Badge */}
           <Link
             href="/my-plan"
             className="flex items-center gap-2 rounded-full border border-gray-600 px-4 py-2 transition hover:border-gray-400"
@@ -81,7 +78,7 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Button */}
         <button
           type="button"
           onClick={() => setOpen(!open)}
@@ -95,7 +92,6 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {open && (
         <div className="space-y-4 border-t border-gray-800 bg-black px-5 py-4 md:hidden">
-          {/* Workouts */}
           <Link
             href="/"
             onClick={() => setOpen(false)}
@@ -106,7 +102,6 @@ export default function Navbar() {
             Workouts
           </Link>
 
-          {/* My Plan */}
           <Link
             href="/my-plan"
             onClick={() => setOpen(false)}
@@ -117,9 +112,7 @@ export default function Navbar() {
             My Plan
           </Link>
 
-          {/* Mobile Badges */}
           <div className="flex gap-3 pt-2">
-            {/* Plan */}
             <Link
               href="/my-plan"
               onClick={() => setOpen(false)}
@@ -128,7 +121,6 @@ export default function Navbar() {
               Plan {planCount}
             </Link>
 
-            {/* Saved */}
             <Link
               href="/my-plan"
               onClick={() => setOpen(false)}
@@ -139,7 +131,6 @@ export default function Navbar() {
           </div>
         </div>
       )}
-      <hr className="border-gray-800" />
     </header>
   );
 }
