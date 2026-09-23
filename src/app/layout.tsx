@@ -3,6 +3,7 @@ import { Oswald, Inter } from "next/font/google";
 import Navbar from "@/components/shared/Navbar";
 import { FitLogProvider } from "@/context/FitLogContext";
 import { Toaster } from "sonner";
+import Footer from "@/components/shared/Footer";
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -25,6 +26,7 @@ export default function RootLayout({
         <FitLogProvider>
           <Navbar />
           {children}
+          <Footer/>
           <Toaster position="top-right" theme="dark" />
         </FitLogProvider>
       </body>
