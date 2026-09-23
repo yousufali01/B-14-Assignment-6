@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Oswald, Inter } from "next/font/google";
+import { Oswald } from "next/font/google";
 import Navbar from "@/components/shared/Navbar";
 import { FitLogProvider } from "@/context/FitLogContext";
 import { Toaster } from "sonner";
@@ -10,23 +10,18 @@ const oswald = Oswald({
   variable: "--font-oswald",
 });
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${oswald.variable} ${inter.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth">
+      <body className={oswald.variable}>
         <FitLogProvider>
           <Navbar />
           {children}
-          <Footer/>
+          <Footer />
           <Toaster position="top-right" theme="dark" />
         </FitLogProvider>
       </body>

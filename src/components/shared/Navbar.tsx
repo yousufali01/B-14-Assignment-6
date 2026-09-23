@@ -18,7 +18,7 @@ export default function Navbar() {
 
   return (
     <header className="w-full bg-black">
-      <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8">
+      <nav className="mx-auto flex h-20 max-w-[95%] items-center justify-between px-5 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
           <Image
@@ -88,6 +88,7 @@ export default function Navbar() {
           {open ? <X size={28} /> : <Menu size={28} />}
         </button>
       </nav>
+      <div className="h-px w-full bg-black" />
 
       {/* Mobile Menu */}
       {open && (
